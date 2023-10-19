@@ -1,17 +1,29 @@
-import { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import Select from "react-select";
 
 import { selectBrands } from "../../toolkit/selectors/carsSelectors";
 import { prices } from "../../utils/utils";
+import { AppDispatch, IFilter } from "../../@types/reduxTypes";
+import { setFilter } from "../../toolkit/slices/carsSlice";
+
+type Option = {
+	value: string;
+	label: string;
+};
 
 export default function Filter() {
+	const disp = useDispatch<AppDispatch>();
 	const brands = useSelector(selectBrands);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const params = useMemo(() => Object.fromEntries([...searchParams]), [searchParams]);
 	// const { brand = "", priceTo = "", mileageFrom, mileageTo } = params;
-	const { brand, priceTo } = params;
+	const { brand, priceTo } = params as unknown as IFilter;
+
+	useEffect(() => {
+		disp(setFilter({ ...params }));
+	}, [disp, params]);
 
 	return (
 		<form>
@@ -19,15 +31,15 @@ export default function Filter() {
 				Car brand
 				<Select
 					options={brands.map(brand => {
-						return { value: brand, label: brand, id: brand };
+						return { value: brand, label: brand };
 					})}
 					name="brand"
-					placeholder="Enter the text"
-					value={brand && { value: brand, label: brand, id: brand }}
+					placeholder="Choose a brand"
+					value={brand && { value: brand, label: brand }}
 					onChange={opt =>
 						setSearchParams({
 							...params,
-							brand: opt.value,
+							brand: (opt as Option).value,
 						})
 					}
 				/>
@@ -37,17 +49,18 @@ export default function Filter() {
 				Price/ 1 hour
 				<Select
 					options={prices.map((_, index) => {
-						const num = index + 3;
-						return { value: num * 10, label: num * 10 };
+						const currentIndex = index + 3;
+						const num = currentIndex * 10;
+						return { value: num.toString(), label: num.toString() };
 					})}
-					getOptionLabel={option => `To ${option.label}$`}
+					getOptionLabel={opt => `To ${(opt as Option).label}$`}
 					name="priceTo"
 					placeholder="To $"
 					value={priceTo && { value: priceTo, label: priceTo }}
 					onChange={opt =>
 						setSearchParams({
 							...params,
-							priceTo: opt?.value,
+							priceTo: (opt as Option).value,
 						})
 					}
 				/>

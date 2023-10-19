@@ -31,8 +31,6 @@ export default function Modal({ car, closeModal }: Props) {
 		description,
 	} = car;
 
-	console.log("carMileage", carMileage);
-
 	const [, city, country] = address.split(", ");
 
 	const conditions = rentalConditions.split("\n");

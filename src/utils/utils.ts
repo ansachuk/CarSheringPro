@@ -8,4 +8,6 @@ export const createDataArray = (arr: Array<Car>) =>
 		return acc;
 	}, [] as Array<string>);
 
-export const prices: Array<string> = new Array(18).fill("");
+export const prices: Readonly<Array<string>> = new Array(18).fill("");
+
+export const filterCars = (arr: Car[]) => arr;

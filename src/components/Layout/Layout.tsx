@@ -14,7 +14,7 @@ export default function Layout() {
 				<Container>
 					<div className={css.wrapper}>
 						<Link className={css.logo} to="/">
-							CarShering
+							CarSheringPro
 						</Link>
 						<nav>
 							<NavLink to="/">Home</NavLink>

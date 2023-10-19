@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { getAll } from "../operations/carsOperations";
-import { AppState } from "../../@types/reduxTypes";
+import { AppState, IFilter } from "../../@types/reduxTypes";
 import { createDataArray } from "../../utils/utils";
 
 const initialState: AppState = {
@@ -21,6 +21,13 @@ const carsSlice = createSlice({
 			state.page += 1;
 			state.carsToShow = [...state.allCars.slice(0, state.page * 8 + 8)];
 		},
+		setFilter(state, action: PayloadAction<Partial<IFilter>>) {
+			// const filter = { ...state.filter, ...action.payload };
+			const filter = { ...action.payload };
+			state;
+			filter;
+		},
+
 		addToFavorite(state, { payload }) {
 			state.favorites.push(payload);
 		},
@@ -49,6 +56,6 @@ const carsSlice = createSlice({
 	},
 });
 
-export const { increasePage, addToFavorite, removeFromFavorite } = carsSlice.actions;
+export const { increasePage, setFilter, addToFavorite, removeFromFavorite } = carsSlice.actions;
 
 export default carsSlice.reducer;
