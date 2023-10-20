@@ -1,0 +1,32 @@
+@import "../../scss/";
+
+.mainButton {
+	padding: 12px 50px;
+
+	border: none;
+	border-radius: 12px;
+	border: 2px solid transparent;
+	background-color: $accentColor;
+
+	color: #ffffff;
+	font-size: 14px;
+	line-height: 142.857%;
+
+	transition-property: background-color;
+	transition-duration: $transitionDuration;
+	transition-timing-function: $transitionTimingFunction;
+
+	&:hover {
+		background-color: $accentHoverColor;
+	}
+
+	&:active {
+		background-color: #3471ffd8;
+	}
+}
+
+.mainButtonBig {
+	@extend .mainButton;
+
+	padding: 12px 99px;
+}

@@ -1,0 +1,144 @@
+@import "/src/scss/";
+
+.modal {
+	position: relative;
+	width: 541px;
+
+	padding: 40px;
+	border-radius: 24px;
+	background-color: #fff;
+}
+
+.close {
+	position: absolute;
+
+	top: 16px;
+	right: 16px;
+
+	padding: 4px;
+	background-color: transparent;
+
+	stroke: black;
+
+	border: 1px solid transparent;
+	border-radius: 50%;
+
+	transition-property: border;
+	transition-duration: $transitionDuration;
+	transition-timing-function: $transitionTimingFunction;
+
+	&:hover {
+		border: 1px solid black;
+	}
+}
+
+.img {
+	border-radius: 14px;
+	margin-bottom: 14px;
+
+	height: 248px;
+	width: 100%;
+	object-fit: cover;
+
+	user-select: none;
+}
+
+.titleWrapper {
+	display: flex;
+	justify-content: space-between;
+	padding-right: 9px;
+
+	color: #121417;
+
+	font-size: $secondaryFS;
+
+	font-weight: 500;
+	line-height: 150%;
+
+	margin-bottom: 8px;
+
+	.model {
+		color: $accentHoverColor;
+	}
+}
+
+.data {
+	color: #12141780;
+	font-size: $mainFS;
+	padding: 0 6px;
+	font-weight: 400;
+	line-height: 150%;
+
+	&:not(:last-child) {
+		border-right: 1px solid rgba(18, 20, 23, 0.1);
+	}
+
+	&Wrapper:last-child {
+		margin-bottom: 14px;
+	}
+}
+
+.desc {
+	font-size: 14px;
+
+	line-height: 142.857%;
+
+	margin-bottom: 24px;
+}
+
+.funcTitle {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+
+	margin-bottom: 8px;
+}
+
+.conditionsWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+
+	margin-bottom: 24px;
+
+	.cond {
+		display: inline-block;
+		color: #363535;
+		font-size: $mainFS;
+
+		line-height: 150%;
+		letter-spacing: -0.24px;
+
+		border-radius: 35px;
+		background-color: #f9f9f9;
+		padding: 7px 14px;
+	}
+}
+
+.accentSpan {
+	color: $accentColor;
+}
+
+.rentCar {
+	padding: 12px 50px;
+	background-color: $accentColor;
+	border-radius: 12px;
+
+	transition-property: background-color;
+	transition-duration: $transitionDuration;
+	transition-timing-function: $transitionTimingFunction;
+
+	color: #ffffff;
+
+	font-size: $mainFS;
+	font-weight: 600;
+	line-height: 142.857%;
+
+	&:hover {
+		background-color: $accentHoverColor;
+	}
+
+	&:active {
+		background-color: #3471ffcd;
+	}
+}

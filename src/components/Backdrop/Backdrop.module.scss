@@ -1,0 +1,35 @@
+.backdropLight {
+	position: fixed;
+	left: 0;
+	top: 0;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+	width: 100%;
+
+	overflow: hidden;
+
+	background-color: rgba(0, 0, 0, 0.1);
+	z-index: 1;
+}
+
+.backdropDark {
+	position: fixed;
+	left: 0;
+	top: 0;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+	width: 100%;
+
+	overflow: hidden;
+
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+}

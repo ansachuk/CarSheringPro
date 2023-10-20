@@ -1,0 +1,89 @@
+@import "/src/scss";
+
+main {
+	flex-grow: 1;
+}
+
+.header {
+	border-bottom: 1.5px solid $accentHoverColor;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+
+	.logo {
+		position: relative;
+
+		font-weight: 600;
+		color: $accentColor;
+		font-size: 28px;
+
+		transition-property: color;
+		transition-duration: $transitionDuration;
+		transition-timing-function: $transitionTimingFunction;
+
+		user-select: none;
+		cursor: pointer;
+
+		&::after {
+			content: "";
+
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+
+			width: 0;
+			height: 2px;
+			background-color: $accentColor;
+
+			transition-property: width, background-color;
+			transition-duration: $transitionDuration;
+			transition-timing-function: $transitionTimingFunction;
+		}
+
+		&:hover {
+			color: $accentHoverColor;
+		}
+
+		&:hover::after {
+			background-color: $accentHoverColor;
+			width: 100%;
+		}
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+		gap: 100px;
+		user-select: none;
+
+		a {
+			padding: 8px 16px;
+			border: 1px solid $accentColor;
+			border-radius: 48px;
+
+			transition-property: border;
+			transition-duration: $transitionDuration;
+			transition-timing-function: $transitionTimingFunction;
+
+			&:hover {
+				border: 1px solid $accentHoverColor;
+			}
+		}
+
+		& [class="active"] {
+			padding: 8px 16px;
+			color: aliceblue;
+			background-color: $accentColor;
+
+			transition-property: background-color;
+			transition-duration: $transitionDuration;
+			transition-timing-function: $transitionTimingFunction;
+
+			&:hover {
+				background-color: $accentHoverColor;
+			}
+		}
+	}
+}

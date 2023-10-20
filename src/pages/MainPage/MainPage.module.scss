@@ -1,0 +1,65 @@
+@import "../../scss/";
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 0;
+
+	.title {
+		margin: 70px 0 50px;
+		color: $accentColor;
+		font-size: 50px;
+	}
+
+	.desc {
+		color: #121417;
+		width: 90%;
+
+		font-size: 18px;
+		line-height: 142.857%;
+		margin-bottom: 100px;
+	}
+
+	.link {
+		position: relative;
+
+		color: $accentColor;
+		font-size: 24px;
+
+		font-weight: 500;
+		line-height: 150%;
+		background-color: transparent;
+
+		transition-property: color;
+		transition-duration: $transitionDuration;
+		transition-timing-function: $transitionTimingFunction;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: -4px;
+			left: 0;
+
+			width: 0;
+			height: 2px;
+			background-color: $accentColor;
+
+			transition-property: width, background-color;
+			transition-duration: $transitionDuration;
+			transition-timing-function: $transitionTimingFunction;
+		}
+
+		&:hover {
+			color: $accentHoverColor;
+		}
+
+		&:hover::after {
+			background-color: $accentHoverColor;
+			width: 100%;
+		}
+	}
+
+	.img {
+		width: 50%;
+		border-radius: 12px;
+	}
+}
