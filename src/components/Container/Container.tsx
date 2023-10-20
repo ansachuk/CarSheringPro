@@ -1,10 +1,8 @@
-import PropTypes from "prop-types";
+import { ReactElement } from "react";
 import css from "./Container.module.scss";
 
-export default function Container({ children }) {
+type Props = { children: ReactElement };
+
+export default function Container({ children }: Props) {
 	return <div className={css.container}>{children}</div>;
 }
-
-Container.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-};

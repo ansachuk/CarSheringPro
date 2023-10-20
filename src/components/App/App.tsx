@@ -8,8 +8,8 @@ import Layout from "../Layout/Layout";
 import Loader from "../Loader/Loader";
 
 const MainPage = lazy(() => import("../../pages/MainPage/MainPage"));
-const CatalogPage = lazy(() => import("../..//pages/CatalogPage/CatalogPage.jsx"));
-const FavoritePage = lazy(() => import("../..//pages/FavoritePage/FavoritePage.jsx"));
+const CatalogPage = lazy(() => import("../../pages/CatalogPage/CatalogPage.jsx"));
+const FavoritePage = lazy(() => import("../../pages/FavoritePage/FavoritePage.jsx"));
 
 function App() {
 	const isLoading = useSelector(selectIsLoading);

@@ -1,13 +1,18 @@
 import { useCallback, useEffect } from "react";
-import PropTypes from "prop-types";
 
 import Backdrop from "../Backdrop/Backdrop";
 import BackdropCss from "../Backdrop/Backdrop.module.scss";
 
 import icon from "/assets/icons.svg";
 import css from "./Modal.module.scss";
+import { Car } from "../../@types/types";
 
-export default function Modal({ car, closeModal }) {
+type Props = {
+	car: Car;
+	closeModal: () => void;
+};
+
+export default function Modal({ car, closeModal }: Props) {
 	const {
 		id,
 		img,
@@ -26,16 +31,28 @@ export default function Modal({ car, closeModal }) {
 		description,
 	} = car;
 
+	console.log("carMileage", carMileage);
+
 	const [, city, country] = address.split(", ");
 
 	const conditions = rentalConditions.split("\n");
 
-	const mileage = carMileage.toString().length > 3 ? `${carMileage.toString()[0]},${carMileage.toString().slice(1, carMileage.length)}` : carMileage;
+	const mileage =
+		carMileage.toString().length > 3 ? `${carMileage.toString()[0]},${carMileage.toString().slice(1, carMileage.toString().length)}` : carMileage;
 
-	const handlerCloseModal = useCallback(
-		e => {
+	const handlerCloseModalClick = useCallback(
+		(e: MouseEvent) => {
 			e.preventDefault();
-			if (e.target.classList.contains(BackdropCss.backdropDark) || e.code === "Escape") {
+			if ((e.target as HTMLDivElement)?.classList.contains(BackdropCss.backdropDark)) {
+				closeModal();
+			}
+		},
+		[closeModal],
+	);
+
+	const handlerCloseModalKeyDown = useCallback(
+		(e: KeyboardEvent) => {
+			if (e.code === "Escape") {
 				closeModal();
 			}
 		},
@@ -46,17 +63,17 @@ export default function Modal({ car, closeModal }) {
 		const doc = document.documentElement;
 		doc.classList.add("overflowHidden");
 
-		window.addEventListener("click", handlerCloseModal);
-		window.addEventListener("keydown", handlerCloseModal);
+		window.addEventListener("click", handlerCloseModalClick);
+		window.addEventListener("keydown", handlerCloseModalKeyDown);
 		return () => {
 			doc.classList.remove("overflowHidden");
-			window.removeEventListener("click", handlerCloseModal);
-			window.removeEventListener("keydown", handlerCloseModal);
+			window.removeEventListener("click", handlerCloseModalClick);
+			window.removeEventListener("keydown", handlerCloseModalKeyDown);
 		};
-	}, [handlerCloseModal]);
+	}, [handlerCloseModalClick, handlerCloseModalKeyDown]);
 
 	return (
-		<Backdrop>
+		<Backdrop type="dark">
 			<div className={css.modal}>
 				<button className={css.close} onClick={closeModal}>
 					<svg width="18" height="18">
@@ -141,8 +158,3 @@ export default function Modal({ car, closeModal }) {
 		</Backdrop>
 	);
 }
-
-Modal.propTypes = {
-	car: PropTypes.object.isRequired,
-	closeModal: PropTypes.func,
-};

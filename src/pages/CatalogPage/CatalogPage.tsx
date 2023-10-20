@@ -7,7 +7,7 @@ import { increasePage } from "../../toolkit/slices/carsSlice.js";
 import { selectCarsToShow, selectAllCars } from "../../toolkit/selectors/carsSelectors.js";
 import { AppDispatch } from "../../@types/reduxTypes.js";
 
-import Filter from "../../components/Filter/Filter.jsx";
+// import Filter from "../../components/Filter/Filter.jsx";
 import CardList from "../../components/CardList/CardList.jsx";
 
 import css from "./CatalogPage.module.scss";
@@ -25,7 +25,7 @@ export default function CatalogPage() {
 
 	return (
 		<div className={css.wrapper}>
-			<Filter />
+			{/* <Filter /> */}
 			<CardList list={carsToShow} />
 
 			{allCars.length > carsToShow.length && (

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
 
 import { selectFavorites } from "../../toolkit/selectors/carsSelectors";
 import { addToFavorite, removeFromFavorite } from "../../toolkit/slices/carsSlice";
@@ -8,11 +7,18 @@ import { addToFavorite, removeFromFavorite } from "../../toolkit/slices/carsSlic
 import Modal from "../Modal/Modal";
 import MainButton from "../MainButton/MainButton";
 
+import { Car } from "../../@types/types";
+import { AppDispatch } from "../../@types/reduxTypes";
+
 import icons from "/assets/icons.svg";
 import css from "./CardItem.module.scss";
 
-export default function CardItem({ car }) {
-	const disp = useDispatch();
+type Props = {
+	car: Car;
+};
+
+export default function CardItem({ car }: Props) {
+	const disp = useDispatch<AppDispatch>();
 	const allFavorites = useSelector(selectFavorites);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -64,7 +70,3 @@ export default function CardItem({ car }) {
 		</li>
 	);
 }
-
-CardItem.propTypes = {
-	car: PropTypes.object.isRequired,
-};

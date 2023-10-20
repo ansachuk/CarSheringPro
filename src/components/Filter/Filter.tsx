@@ -47,7 +47,7 @@ export default function Filter() {
 					onChange={opt =>
 						setSearchParams({
 							...params,
-							priceTo: opt.value,
+							priceTo: opt?.value,
 						})
 					}
 				/>

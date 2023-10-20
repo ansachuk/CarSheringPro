@@ -14,4 +14,5 @@ export type Car = {
 	rentalCompany: string;
 	address: string;
 	rentalConditions: string;
+	mileage: number;
 };

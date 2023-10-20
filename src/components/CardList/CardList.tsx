@@ -1,10 +1,12 @@
-import PropTypes from "prop-types";
-
 import CardItem from "../CardItem/CardItem";
+
+import { Car } from "../../@types/types";
 
 import css from "./CardList.module.scss";
 
-export default function CardList({ list }) {
+type Props = { list: Car[] };
+
+export default function CardList({ list }: Props) {
 	return (
 		<ul className={css.list}>
 			{list.map(car => (
@@ -13,7 +15,3 @@ export default function CardList({ list }) {
 		</ul>
 	);
 }
-
-CardList.propTypes = {
-	list: PropTypes.array.isRequired,
-};
