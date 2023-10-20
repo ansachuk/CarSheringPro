@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import carImg from "/assets/car.jpg";
+import carImg from "/assets/car.webp";
 
 import css from "./MainPage.module.scss";
 

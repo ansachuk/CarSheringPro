@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getAll } from "../../toolkit/operations/carsOperations";
-import { increasePage } from "../../toolkit/slices/carsSlice";
+import { getAll } from "../../toolkit/operations/carsOperations.js";
+import { increasePage } from "../../toolkit/slices/carsSlice.js";
 
 import { selectCarsToShow, selectAllCars } from "../../toolkit/selectors/carsSelectors.js";
+import { AppDispatch } from "../../@types/reduxTypes.js";
 
-import Filter from "../../components/Filter/Filter";
-import CardList from "../../components/CardList/CardList";
+import Filter from "../../components/Filter/Filter.jsx";
+import CardList from "../../components/CardList/CardList.jsx";
 
 import css from "./CatalogPage.module.scss";
 
 export default function CatalogPage() {
-	const disp = useDispatch();
+	const disp = useDispatch<AppDispatch>();
 	const allCars = useSelector(selectAllCars);
 	const carsToShow = useSelector(selectCarsToShow);
 

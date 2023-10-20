@@ -9,7 +9,6 @@ const persistConfig = {
 	key: "favorites",
 	storage,
 	whitelist: ["favorites"],
-	// whitelist: ["favorites", "allCars"],
 };
 
 const persistedReducer = persistReducer(persistConfig, carsReducer);

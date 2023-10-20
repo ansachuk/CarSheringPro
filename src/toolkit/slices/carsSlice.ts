@@ -1,8 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { getAll } from "../operations/carsOperations";
+import { AppState } from "../../@types/reduxTypes";
 import { createDataArray } from "../../utils/utils";
 
-const initialState = {
+const initialState: AppState = {
 	allCars: [],
 	carsToShow: [],
 	favorites: [],
@@ -41,9 +42,9 @@ const carsSlice = createSlice({
 				state.brands = createDataArray(state.allCars);
 				state.carsToShow = state.allCars.slice(0, 8);
 			})
-			.addCase(getAll.rejected, (state, { payload }) => {
+			.addCase(getAll.rejected.type, (state, action: PayloadAction<Error>) => {
 				state.isLoading = false;
-				state.error = payload;
+				state.error = action.payload;
 			});
 	},
 });

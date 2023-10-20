@@ -2,13 +2,14 @@ import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import Layout from "../Layout/Layout";
-import Loader from "../Loader/Loader";
 import { selectIsLoading } from "../../toolkit/selectors/carsSelectors";
 
-const MainPage = lazy(() => import("/src/pages/MainPage/MainPage.jsx"));
-const CatalogPage = lazy(() => import("/src/pages/CatalogPage/CatalogPage.jsx"));
-const FavoritePage = lazy(() => import("/src/pages/FavoritePage/FavoritePage.jsx"));
+import Layout from "../Layout/Layout";
+import Loader from "../Loader/Loader";
+
+const MainPage = lazy(() => import("../../pages/MainPage/MainPage"));
+const CatalogPage = lazy(() => import("../..//pages/CatalogPage/CatalogPage.jsx"));
+const FavoritePage = lazy(() => import("../..//pages/FavoritePage/FavoritePage.jsx"));
 
 function App() {
 	const isLoading = useSelector(selectIsLoading);

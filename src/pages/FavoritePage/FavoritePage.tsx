@@ -7,5 +7,6 @@ import NotFound from "../../components/NotFound/NotFound";
 
 export default function FavoritePage() {
 	const allFavorites = useSelector(selectFavorites);
+
 	return <>{allFavorites.length ? <CardList list={allFavorites} /> : <NotFound />}</>;
 }

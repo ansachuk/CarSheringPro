@@ -11,11 +11,11 @@ import Loader from "./components/Loader/Loader.jsx";
 
 import "./index.scss";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<PersistGate loading={<Loader />} persistor={persistor}>
-				<BrowserRouter basename="CarShering">
+				<BrowserRouter basename="CarSheringPro">
 					<App />
 				</BrowserRouter>
 			</PersistGate>
