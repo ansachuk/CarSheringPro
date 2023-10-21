@@ -29,7 +29,7 @@ export default function Filter() {
 	}, [disp, params]);
 
 	return (
-		<form>
+		<form className={css.form}>
 			<label>
 				Car brand
 				<Select
@@ -47,10 +47,8 @@ export default function Filter() {
 								brand: (opt as Option).value,
 							});
 						} else {
-							setSearchParams({
-								...params,
-								brand: "",
-							});
+							searchParams.delete("brand");
+							return setSearchParams(searchParams);
 						}
 					}}
 				/>
@@ -76,73 +74,65 @@ export default function Filter() {
 								priceTo: (opt as Option).value,
 							});
 						} else {
-							setSearchParams({
-								...params,
-								priceTo: "",
-							});
+							searchParams.delete("priceTo");
+							return setSearchParams(searchParams);
 						}
 					}}
 				/>
 			</label>
 
-			<div className={css.milleageWrapper}>
-				<label>
-					From
-					<Select
-						isClearable={true}
-						options={milleage.map((_, index) => {
-							const currentIndex = index + 7;
-							const num = currentIndex * 500;
-							return { value: num.toString(), label: num.toString() };
-						})}
-						getOptionLabel={opt => `From ${(opt as Option).label}m`}
-						name="milleageFrom"
-						placeholder="From"
-						value={mileageFrom && { value: mileageFrom, label: mileageFrom }}
-						onChange={opt => {
-							if (opt) {
-								setSearchParams({
-									...params,
-									mileageFrom: (opt as Option).value,
-								});
-							} else {
-								setSearchParams({
-									...params,
-									mileageFrom: "",
-								});
-							}
-						}}
-					/>
-				</label>
-				<label>
-					To
-					<Select
-						isClearable={true}
-						options={milleage.map((_, index) => {
-							const currentIndex = index + 7;
-							const num = currentIndex * 500;
-							return { value: num.toString(), label: num.toString() };
-						})}
-						getOptionLabel={opt => `To ${(opt as Option).label}m`}
-						name="milleageTo"
-						placeholder="To"
-						value={mileageTo && { value: mileageTo, label: mileageTo }}
-						onChange={opt => {
-							if (opt) {
-								setSearchParams({
-									...params,
-									mileageTo: (opt as Option).value,
-								});
-							} else {
-								setSearchParams({
-									...params,
-									mileageTo: "",
-								});
-							}
-						}}
-					/>
-				</label>
-			</div>
+			<label>
+				From
+				<Select
+					isClearable={true}
+					options={milleage.map((_, index) => {
+						const currentIndex = index + 7;
+						const num = currentIndex * 500;
+						return { value: num.toString(), label: num.toString() };
+					})}
+					getOptionLabel={opt => `From ${(opt as Option).label}m`}
+					name="milleageFrom"
+					placeholder="From"
+					value={mileageFrom && { value: mileageFrom, label: mileageFrom }}
+					onChange={opt => {
+						if (opt) {
+							setSearchParams({
+								...params,
+								mileageFrom: (opt as Option).value,
+							});
+						} else {
+							searchParams.delete("mileageFrom");
+							return setSearchParams(searchParams);
+						}
+					}}
+				/>
+			</label>
+			<label>
+				To
+				<Select
+					isClearable={true}
+					options={milleage.map((_, index) => {
+						const currentIndex = index + 7;
+						const num = currentIndex * 500;
+						return { value: num.toString(), label: num.toString() };
+					})}
+					getOptionLabel={opt => `To ${(opt as Option).label}m`}
+					name="milleageTo"
+					placeholder="To"
+					value={mileageTo && { value: mileageTo, label: mileageTo }}
+					onChange={opt => {
+						if (opt) {
+							setSearchParams({
+								...params,
+								mileageTo: (opt as Option).value,
+							});
+						} else {
+							searchParams.delete("mileageTo");
+							return setSearchParams(searchParams);
+						}
+					}}
+				/>
+			</label>
 		</form>
 	);
 }
