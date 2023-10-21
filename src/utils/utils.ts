@@ -10,4 +10,6 @@ export const createDataArray = (arr: Array<Car>) =>
 
 export const prices: Readonly<Array<string>> = new Array(18).fill("");
 
+export const milleage: Readonly<Array<string>> = new Array(10).fill("");
+
 export const filterCars = (arr: Car[]) => arr;
