@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAll } from "../../toolkit/operations/carsOperations.js";
-import { increasePage } from "../../toolkit/slices/carsSlice.js";
+import { increasePage, setFilter } from "../../toolkit/slices/carsSlice.js";
 
 import { selectCarsToShow, selectAllCars } from "../../toolkit/selectors/carsSelectors.js";
 import { AppDispatch } from "../../@types/reduxTypes.js";
@@ -17,11 +18,19 @@ export default function CatalogPage() {
 	const allCars = useSelector(selectAllCars);
 	const carsToShow = useSelector(selectCarsToShow);
 
+	const [searchParams] = useSearchParams();
+	const params = useMemo(() => Object.fromEntries([...searchParams]), [searchParams]);
+
 	useEffect(() => {
-		if (!allCars.length) {
-			disp(getAll());
-		}
-	}, [allCars.length, disp]);
+		const fetchAll = async () => {
+			if (!allCars.length) {
+				await disp(getAll());
+			}
+			disp(setFilter({ ...params }));
+		};
+
+		fetchAll();
+	}, [allCars.length, disp, params]);
 
 	return (
 		<div className={css.wrapper}>

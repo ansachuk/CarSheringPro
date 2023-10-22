@@ -22,6 +22,7 @@ const carsSlice = createSlice({
 			state.page += 1;
 			state.carsToShow = [...state.allCars.slice(0, state.page * 8 + 8)];
 		},
+
 		setFilter(state, action: PayloadAction<Partial<IFilter>>) {
 			const { payload: filter } = action;
 			state.carsToShow = state.allCars.filter(el => {
