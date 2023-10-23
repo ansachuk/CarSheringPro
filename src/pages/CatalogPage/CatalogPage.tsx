@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getAll } from "../../toolkit/operations/carsOperations.js";
 import { increasePage, setFilter } from "../../toolkit/slices/carsSlice.js";
-
 import { selectCarsToShow, selectAllCars } from "../../toolkit/selectors/carsSelectors.js";
+
 import { AppDispatch } from "../../@types/reduxTypes.js";
 
 import Filter from "../../components/Filter/Filter.jsx";
 import CardList from "../../components/CardList/CardList.jsx";
+import NotFound from "../../components/NotFound/NotFound.js";
 
 import css from "./CatalogPage.module.scss";
 
@@ -37,11 +38,13 @@ export default function CatalogPage() {
 			<Filter />
 			<CardList list={carsToShow} />
 
-			{allCars.length > carsToShow.length && (
+			{allCars.length > carsToShow.length && carsToShow.length >= 8 && (
 				<button onClick={() => disp(increasePage())} className={css.loadMore}>
 					Load More...
 				</button>
 			)}
+
+			{carsToShow.length === 0 && <NotFound title="No cars!" />}
 		</div>
 	);
 }

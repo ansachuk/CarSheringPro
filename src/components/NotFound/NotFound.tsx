@@ -1,18 +1,14 @@
-import { Link } from "react-router-dom";
-
 import notFound from "/assets/notFound.png";
 
 import css from "./NotFound.module.scss";
 
-export default function NotFound() {
+type Props = { title: string };
+
+export default function NotFound({ title }: Props) {
 	return (
 		<div className={css.wrapper}>
-			<img className={css.img} width="550" height="550" src={notFound} />
-			<p className={css.title}>No favorite cars!</p>
-
-			<Link to="/catalog" className={css.link}>
-				Back to catalog
-			</Link>
+			<p className={css.title}>{title}</p>
+			<img className={css.img} width="500" height="500" src={notFound} />
 		</div>
 	);
 }

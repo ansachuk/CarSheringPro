@@ -15,7 +15,7 @@ Features
 
 - HTML <a href="https://www.w3.org/html/" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5 logo" width="40" height="40"/></a>
 - SASS <a href="https://sass-lang.com" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg" alt="sass logo" width="40" height="40"/></a>
-- JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript logo" width="40" height="40"/></a>
+- TypeScript <a href="https://www.typescriptlang.org/" target="_blank"><img align="left" alt="JavaScript" width="32px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" /></a>
 - React <a href="https://react.dev/" target="_blank"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="react logo" width="40" height="40"/></a>
 - Redux <a href="https://redux.js.org/" target="_blank"><img src="https://cdn.worldvectorlogo.com/logos/redux.svg" alt="redux logo" width="40" height="40"/></a>
 - Vite <a href="https://vitejs.dev/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1039px-Vitejs-logo.svg.png" alt="vite logo" width="40" height="40"/></a>
@@ -23,3 +23,7 @@ Features
 ## Feedback 📝
 
 You are welcome to leave any feedback or suggestions for improvement. Please feel free to open an issue on our GitHub repository or contact me directly. Thank you for visiting CarShering!
+
+## TODO
+
+Add responcive, burger-menu

@@ -24,20 +24,24 @@ const carsSlice = createSlice({
 		},
 
 		setFilter(state, action: PayloadAction<Partial<IFilter>>) {
-			const { payload: filter } = action;
+			const {
+				payload: { mileageTo, mileageFrom, brand, priceTo },
+			} = action;
+
+			if (!mileageFrom && !mileageTo && !brand && !priceTo) {
+				state.carsToShow = state.allCars.slice(0, 8);
+				return;
+			}
+
 			state.carsToShow = state.allCars.filter(el => {
-				const milTo = filter.mileageTo ? el.mileage.toString() <= filter.mileageTo : true;
+				const milTo = mileageTo ? el.mileage.toString() <= mileageTo : true;
+				const milFrom = mileageFrom ? el.mileage.toString() >= mileageFrom : true;
+				const carBrand = brand ? el.make.includes(brand) : true;
+				const price = priceTo ? Number(el.rentalPrice.slice(1)) <= Number(priceTo) : true;
 
-				const milFrom = filter.mileageFrom ? el.mileage.toString() >= filter.mileageFrom : true;
-
-				const brand = filter.brand ? el.make.includes(filter.brand) : true;
-
-				const price = filter.priceTo ? Number(el.rentalPrice.slice(1)) <= Number(filter.priceTo) : true;
-
-				if (milFrom && milTo && brand && price) {
+				if (milFrom && milTo && carBrand && price) {
 					return el;
 				}
-
 				return;
 			});
 		},
